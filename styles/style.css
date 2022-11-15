@@ -22,7 +22,13 @@ body {
 }
 
 .logo {
-	width: 60px;
+	font-size: 10px;
+	font-weight: bold;
+}
+.logo-img{
+	display: block;
+	margin: 0 auto;
+	width: 30px;
 }
 .weather-logo {
 	width: 100%;
@@ -39,7 +45,7 @@ body {
 	border: 1px solid #555d6f45;
 	transition: all 0.2s ease-in-out;
 }
-.search-button:hover {
+.search-button:hover {color: #B33E27;
 	background-color: #e94619cd;
 	border: 1px solid #555d6f45;
 }
