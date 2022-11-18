@@ -312,24 +312,4 @@ li {
 	}
 }
 
-@media (max-width: 400px) {
-	.container {
-		padding: 20px 10px 10px;
-	}
-	.logo-img{
-		width: 25px;
-	}
-	.logo {
-		font-size: 8px;
-	}
-	.temperature-container {
-		justify-content: center;
-	}
-
-	.temperature {
-		flex: none;
-		margin-right: 3px;
-		font-size: 45px;
-	}
-}
 
