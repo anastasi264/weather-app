@@ -257,8 +257,8 @@ body {
 		border-radius: 0;
 	}
 
-	.current-location-icon {
-		/* font-size: 20px; */
+	.header {
+		margin: 0;
 	}
 
 	.main {
