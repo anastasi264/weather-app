@@ -171,10 +171,6 @@ body {
 
 
 @media (max-width: 768px) {
-	.wrapper {
-		max-width: 500px;
-	}
-
 	.container {
 		padding: 20px 30px 10px;
 	}
@@ -205,6 +201,7 @@ body {
 
 	.current-city {
 		font-size: 30px;
+		margin-top: 15px;
 	}
 
 	.current-location-icon {
@@ -213,10 +210,6 @@ body {
 
 	.current-day {
 		font-size: 16px;
-	}
-
-	.current-weather {
-		margin-top: -10px;
 	}
 
 	.temperature {
@@ -228,17 +221,14 @@ body {
 	}
 
 	.weather-description {
-		font-size: 18px;
+		font-size: 24px;
 		margin-bottom: 10px;
 	}
 
 	.weather-datail {
-		font-size: 14px;
-	}
-
-	li {
 		font-size: 16px;
 	}
+
 	
 	.weather-icon {
 		font-size: 24px;
@@ -250,6 +240,7 @@ body {
 	.wrapper {
 		max-width	: 100%;
 		min-height: 100vh;
+		min-height: -webkit-fill-available;
 		margin: 0 auto;
 	}
 	
@@ -273,6 +264,10 @@ body {
 	}
 
 	.current-weather {
+		margin: 0;
+	}
+	.current-city {
+		font-size: 30px;
 		margin: 0;
 	}
 
