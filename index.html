@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="styles/style.css">
 	<script src="https://kit.fontawesome.com/c51e8f4235.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+	<!-- <iframe src="https://lottie.host/?file=b3fdc4e2-82b0-4068-bb44-a3dfed4e7f0e/m8E6Rb8vwh.json"></iframe> -->
 </head>
 
 <body>
@@ -23,7 +24,7 @@
 			<div class="header">
 				<div class="logo">
 					<img class="logo-img" src="img/logo.png" alt="logo">
-					weather
+					My Day
 				</div>
 
 				<div class="input-group search-form">
@@ -55,8 +56,7 @@
 
 				<div class="row flex-column flex-sm-row">
 					<div class="col weather-img">
-						<img src="img/current-weather.png" class="img-fluid" alt="current-weather">
-
+						<img src="img/sunny-rainy.gif" id="icon" class="img-fluid icon-img-weather" alt="current-weather">
 					</div>
 					<div class="col current-weather">
 
@@ -94,41 +94,8 @@
 
 			<hr />
 
-			<div class="other-days">
-				<div class="first-day">
-					<ul class="first-day-list">
-						<li>Nov, 7</li>
-						<li><i class="weather-icon fa-solid fa-cloud-bolt"></i></li>
-						<li><strong>11°</strong> 0°</li>
-					</ul>
-				</div>
-				<div class="first-day">
-					<ul class="first-day-list">
-						<li>Nov, 8</li>
-						<li><i class="weather-icon fa-solid fa-sun sun"></i></li>
-						<li><strong>21°</strong> 13°</li>
-					</ul>
-				</div>
-				<div class="first-day">
-					<ul class="first-day-list">
-						<li>Nov, 9</li>
-						<li><i class=" weather-icon fa-solid fa-wind"></i></li>
-						<li><strong>16°</strong> 2°</li>
-					</ul>
-				</div>
-				<div class="first-day">
-					<ul class="first-day-list">
-						<li>Nov, 10</li>
-						<li><i class="weather-icon fa-solid fa-cloud-showers-heavy"></i></li>
-						<li><strong>14°</strong> 5°</li>
-					</ul>
-				</div>
-				<div class="first-day">
-					<ul class="first-day-list">
-						<li> Nov, 11</li>
-						<li><i class="weather-icon fa-solid fa-sun sun"></i></li>
-						<li><strong>18°</strong> 11°</li>
-					</ul>
+			<div id="weather-forecast">
+					
 				</div>
 			</div>
 

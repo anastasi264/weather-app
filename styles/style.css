@@ -3,12 +3,13 @@ body {
 	color: #555D6F;
 	background-color: #f5f2fa97;
 }
+
 .wrapper {
-	max-width: 650px;
+	max-width: 620px;
 	margin: 20px auto;
 }
 .container {
-	padding: 20px 40px 10px;
+	padding: 30px 40px 30px;
 	background-color: #fbfbfc68;
 	border-radius: 20px;
 }
@@ -21,6 +22,7 @@ body {
 }
 .logo {
 	font-size: 12px;
+	color: #555D6F;
 	font-weight: bold;
 }
 .logo-img{
@@ -43,6 +45,13 @@ body {
 .search-button:hover {
 	background-color: #e94619cd;
 	border: 1px solid #555d6f45;
+}
+.form-control:focus {
+	color: inherit;
+	background-color: #fff;
+	border-color: grey;
+	outline: 0;
+	box-shadow: none;
 }
 .earth-icon {
 	color: #fff;
@@ -93,6 +102,9 @@ body {
 	padding: 0 30px 0;
 	transition: all 0.4s ease-in-out;
 }
+.icon-img-weather {
+	width: 100%;
+}
 .weather-img:hover {
 	transform: scale(1.08);
 	cursor: pointer;
@@ -142,38 +154,25 @@ body {
 	flex: 0 1 50%;
 }
 
-.other-days {
+.forecast {
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 	text-align: center;
 }
-.first-day {
-	flex: 0 1 25%;
-}
-ul {
-	padding: 0;
-}
-li {
+.forecast-day {
+	flex: 0 1 20%;
 	font-size: 16px;
 	line-height: 200%;
-	list-style: none;
 }
-.weather-icon {
-	font-size: 30px;
-	transition: all 0.2s ease-in-out;
-}
-.weather-icon:hover {
-	transform: scale(1.2);
-}
-.sun {
-	color: #B33E27;
+.weather-forecast-temperature-max {
+	font-weight: bold;
 }
 
 
 @media (max-width: 768px) {
 	.wrapper {
 		max-width: 500px;
-		margin: 15px auto;
 	}
 
 	.container {

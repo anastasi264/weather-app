@@ -67,7 +67,62 @@ let fahrenheit = document.querySelector(".fahrenheit");
 fahrenheit.addEventListener("click", degreeConversion);
 celsius.addEventListener("click", degreeConversion);
 
+// ............ API FORMAT DATE FORECAST......... //
+function formatDate(timestamp) {
+	let date = new Date(timestamp * 1000);
+	let day = date.getDay();
+	let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+	
+	return days[day];
+}
 
+// ............ API DISPLAY FORECAST......... //
+
+
+function displayForecast(response) {
+	let forecast = response.data.daily;
+	console.log(forecast);
+	let forecastElement = document.querySelector("#weather-forecast");
+	let forecastHTML = `<div class="forecast">`;
+	let days = ['a', 'b', 'c', 'd', 'e'];
+	const newForecastArray = forecast.splice(1, 5);
+	newForecastArray.forEach((forecastDay, index) => {
+		console.log(index, 'forecastDay', forecastDay);
+		// src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
+		forecastHTML =
+			forecastHTML + `
+				<div class="forecast-day">
+					<div class="weather-forecast-day">
+						${formatDate(forecastDay.dt)}
+					</div>
+					<img 
+						src="${weatherData[forecastDay.weather[0].main]}"
+						alt=""
+						width="42"
+					>
+					<div class="weather-forecast-temperatures">
+						<span class="weather-forecast-temperature-max"> ${Math.round(forecastDay.temp.max)}°</span>
+						<span class="weather-forecast-temperature-min">   ${Math.round(forecastDay.temp.min)}° </span>
+					</div>
+				</div>
+			`;
+		
+	});
+
+	forecastHTML = forecastHTML + `</div>`;
+
+	forecastElement.innerHTML = forecastHTML;
+}
+
+// ............ API FORECAST......... //
+function getForecast(coordinates) {
+	console.log(coordinates);
+	let apiKeyForecast = "a43564c91a6c605aeb564c9ed02e3858";
+	// let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKeyForecast}&units=metric`
+	let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKeyForecast}&units=metric`
+	console.log(apiUrl);
+	axios.get(apiUrl).then(displayForecast);
+}
 
 // ............ API TEMPERATURE......... //
 
@@ -78,6 +133,7 @@ function apiWeather(city) {
 	return `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`; 
 }
 function showTemp(response) {
+
 	console.log(response.data);
 	console.log(response.data.name);
 	console.log(response.data.sys.country);
@@ -85,14 +141,14 @@ function showTemp(response) {
 	console.log(response.data.weather[0].description);
 	console.log(response.data.wind.speed);
 	console.log(response.data.main.humidity);
-
-
+	
 	let cityName = response.data.name;
 	let country = response.data.sys.country;
 	let cityTemp = Math.round(response.data.main.temp);
 	let description = response.data.weather[0].description;
 	let windSpeed = Math.round(response.data.wind.speed);
 	let humidity = Math.round(response.data.main.humidity);
+	let icon = response.data.weather[0].icon;
 
 	let titleCity = document.querySelector("#location");
 	titleCity.innerHTML = `${cityName}, ${country}`;
@@ -108,25 +164,24 @@ function showTemp(response) {
 
 	let humidityValue = document.querySelector(".humidity-value");
 	humidityValue.innerHTML = `${humidity} %`;
+
+	let iconTemp = document.querySelector("#icon");
+	iconTemp.setAttribute("src", `${weatherData[response.data.weather[0].main]}`);
+
+	getForecast(response.data.coord);
 }
+const weatherData = {
+	Clouds: 'img/sunny-cloud.gif',
+	Rain: 'img/sunny-rainy.gif',
+	Clear: 'img/sunny.gif',
+	Snow: 'img/snow.gif',
+	Thunderstorm: 'img/stormy.gif',
+	Drizzle: 'img/rainy.gif',
+	Mist: 'img/windy.gif',
+};
 
+let sun = 
 axios.get(apiWeather(city)).then(showTemp);
-
-// ............LOCATION......... //
-
-// function changeCity(event) {
-
-// 	let searchInput = document.querySelector("#search-input");
-// 	let location = document.querySelector("#location");
-// 	location.innerHTML = searchInput.value;
-// }
-
-// let searchButton = document.querySelector("#button-addon1");
-// searchButton.addEventListener("click", changeCity);
-
-// axios.get(apiWeather).then(changeCity)
-
-
 
 // ............ NAVIGATION......... //
 
@@ -152,3 +207,6 @@ function currentPosition (event) {
 }
 let myLocationButton = document.querySelector(".location-button");
 myLocationButton.addEventListener("click", currentPosition)
+
+
+displayForecast();
