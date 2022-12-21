@@ -1,3 +1,8 @@
+html,
+body {
+	height: 100%;
+}
+
 body {
 	font-family: 'Poppins', sans-serif;
 	color: #555D6F;
@@ -238,13 +243,17 @@ body {
 
 @media (max-width: 576px) {
 	.wrapper {
+		display: flex;
+		flex-direction: column;
 		max-width	: 100%;
 		min-height: 100vh;
-		min-height: -webkit-fill-available;
 		margin: 0 auto;
 	}
 	
 	.container {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
 		padding: 15px 15px 10px;
 		border-radius: 0;
 	}
