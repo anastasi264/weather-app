@@ -29,19 +29,18 @@ searchInput.addEventListener("keypress", function(event) {
 let now = new Date();
 let hour = now.getHours();
 let minutes = String(now.getMinutes()).padStart(2, '0');
-// console.log(`${hour} : ${minutes}`);
 
 
 let allDays =  ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let currentDay = allDays[now.getDay()];
 let currentDate = now.getDate();
-// console.log(`${currentDay}, ${currentDate}`);
 
 let todayDate = document.querySelector("#date");
 todayDate.innerHTML = `${hour}:${minutes} | ${currentDay}, ${currentDate}`
 
 
 // ............TEMPERATURE DEGREE......... //
+
 function degreeConversion(event) {
 	const tempValueBox = document.querySelector(".temp-value"); 
 	const temperatureValue = Number(tempValueBox.innerText);
@@ -68,6 +67,7 @@ fahrenheit.addEventListener("click", degreeConversion);
 celsius.addEventListener("click", degreeConversion);
 
 // ............ API FORMAT DATE FORECAST......... //
+
 function formatDate(timestamp) {
 	let date = new Date(timestamp * 1000);
 	let day = date.getDay();
@@ -78,7 +78,6 @@ function formatDate(timestamp) {
 
 // ............ API DISPLAY FORECAST......... //
 
-
 function displayForecast(response) {
 	let forecast = response.data.daily;
 	console.log(forecast);
@@ -88,7 +87,6 @@ function displayForecast(response) {
 	const newForecastArray = forecast.splice(1, 5);
 	newForecastArray.forEach((forecastDay, index) => {
 		console.log(index, 'forecastDay', forecastDay);
-		// src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
 		forecastHTML =
 			forecastHTML + `
 				<div class="forecast-day">
@@ -106,7 +104,6 @@ function displayForecast(response) {
 					</div>
 				</div>
 			`;
-		
 	});
 
 	forecastHTML = forecastHTML + `</div>`;
@@ -115,6 +112,7 @@ function displayForecast(response) {
 }
 
 // ............ API FORECAST......... //
+
 function getForecast(coordinates) {
 	console.log(coordinates);
 	let apiKeyForecast = "a43564c91a6c605aeb564c9ed02e3858";
@@ -185,7 +183,6 @@ axios.get(apiWeather(city)).then(showTemp);
 
 // ............ NAVIGATION......... //
 
-
 function myPosition(position) {
 	console.log(position.coords.latitude);
 	console.log(position.coords.longitude);
@@ -196,9 +193,7 @@ function myPosition(position) {
 	let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
 	axios.get(url).then(showTemp);
 }
-
 navigator.geolocation.getCurrentPosition(myPosition);
-
 
 // ............ NAVIGATION BUTTON......... //
 
@@ -207,6 +202,5 @@ function currentPosition (event) {
 }
 let myLocationButton = document.querySelector(".location-button");
 myLocationButton.addEventListener("click", currentPosition)
-
 
 displayForecast();
