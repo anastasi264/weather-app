@@ -1,2 +1,1 @@
-# weather-app
-# [DEMO LINK](https://anastasi264.github.io/weather-app/)
+Demo link is available [here](https://anastasi264.github.io/weather-app/).
